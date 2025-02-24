@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="mt-12 text-black font-bold text-3xl text-center">Projects</h1>
+
+<ul class="space-y-4 mt-4 flex-col justify-center mx-auto " id="projects">
+
+  <% @projects.each do |project| %>
+    <li class="border border-blue-400 w-1/2 mx-auto flex justify-center items-center rounded-md  p-4 hover:border-blue-700 ">
+      <%= link_to project.name, project %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="mt-12">
+<%= link_to "New project", new_project_path, class:"text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700"
+ %>
+</div>

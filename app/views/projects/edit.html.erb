@@ -1,0 +1,10 @@
+<h1>Editing project</h1>
+
+<%= render "form", project: @project %>
+
+<br>
+
+<div class="flex gap-4 justify-center items-center mx-auto">
+  <%= link_to "Show this project", @project, class:"text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700"  %> 
+  <%= link_to "Back to projects", projects_path, class:"text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700" %>
+</div>

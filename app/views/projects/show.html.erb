@@ -1,0 +1,58 @@
+<p style="color: green"><%= notice %></p>
+<h2 class="text-center text-3xl font-bold mt-12 text-blue-400 "> 
+  <%= @project.name %></h2>
+  <div class=" grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 p-6 shadow-md rounded-md  ">
+    <div class="space-y-4 ">
+      <p class="text-xl font-bold ">Descripation: <span class="
+        text-gray-600 font-normal"> <%= @project.description %></span>
+      </p>
+      <p class="text-xl font-bold gap-6">Status:<span class="<%= case @project.status
+      when 'Completed' then 'bg-green-500 text-white px-3 py-1 rounded-md'
+      when 'In Progress' then 'bg-yellow-500 text-white px-3 py-1 rounded-md'
+      when 'On Hold ' then 'bg-red-500 text-white px-3 py-1 rounded-md'
+      else 'bg-gray-300 text-black px-3 py-1 rounded-md'
+      end
+    %>
+    "><%= @project.status %> </span>
+     </p>
+
+
+    <%= form_with model: @project, url: update_status_project_path(@project), method: :patch, local:true do |f| %>
+
+    <div class=" flex gap-2 text-center justify-center ">
+     <%= f.label :status, "change status:", class:" text-xl font-bold block " %>
+     <div class="border  rounded-md px-3 py-2 w-full focus:ring-2 focus:ring-blue-300 appearance-none ", style="width:fit-content">
+     <%= f.select :status,  options_for_select(Project::VALID_STATUS, @project.status), {} %>
+   </div>
+    </div>
+
+    <div class="flex justify-between mx-auto">
+      <button  type=" submit" class="flex items-center gap-2 text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none">
+      <i class="fa-solid fa-circle-plus"></i>Update status  </button>
+     
+     <% end %>
+  
+
+   <ul class="flex gap-2">
+    <li class="border border-blue-400 gap-2 hover:bg-blue-600 p-4 rounded-md text-black hover:text-white"> <i class="fas fa-edit"></i><%= link_to "Edit", edit_project_path(@project) %></li>
+    <li class="border border-blue-400 gap-2 hover:bg-blue-600 p-4 rounded-md text-black hover:text-white"><i class="fas fa-trash"></i>
+      <%= link_to "Destroy", project_path(@project), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+  </ul>
+
+</div>
+</div>
+<div class="">
+<h2 class="text-xl font-bold mb-4 "> Comments </h2>
+<ul class="space-y-4">
+  <li class="border border-blue-400 p-4 rounded-md bg-blue-200">
+<%= render @project.comments %>
+</li>
+</ul>
+<h2 class="text-xl font-bold mb-4 "> Add a comments: </h2>
+<%= render 'comments/form' %>
+</div>
+</div>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectConversation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  <link href=" https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body style="background-image: url('https://media.istockphoto.com/id/938484386/vector/abstract-blue-gradient-background.jpg?s=612x612&w=0&k=20&c=F5lRq6NW_24AZHR1mTI0_gfkoacLu1gycs_TRZhvzr8=');" class=" bg-cover bg-center text-center">
+    <%= yield %>
+  </body>
+</html>
